@@ -24,6 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 
+''' Change history
+7/22/2021 add color to plots
+'''
+
 import pygame, sys, time, random, math
 from pygame.locals import *
 
@@ -148,13 +152,22 @@ def plot_population(beg_value,beg_rho,end_rho,low_value,high_value):
 
   while rho <= end_rho :
 
+
+    color = [0,0,255]
     value = beg_value
     plot_count = 0      # number of points plotted for this rho
+    
     for i in range(1,100000):
       value = value * rho * (1-value)
       if (value > low_value and value < high_value ):
-        plot (int(x) , value,low_value,high_value,WHITE)
+        plot (int(x) , value,low_value,high_value,color)
         plot_count = plot_count + 1
+
+        if plot_count % 5 == 0:  # change the color of the plot from blue to red as more points are plotted. 
+          if color[2] > 0:
+            color[2] = color[2] - 1
+            if color[0] < 255:
+              color[0] = color[0] + 1
 
       if plot_count > (.75 * WINDOWHEIGHT):       # auto density to avoid white out 
         break
@@ -174,9 +187,10 @@ def plot_population(beg_value,beg_rho,end_rho,low_value,high_value):
 
 # Set up the default variables
 
-begin_value = .5
+begin_value = .9
 zoom_ratio = 4.
 begin_rho = 3.5
+
 end_rho = 4.0
 low_x = 0.
 high_x = 1.
