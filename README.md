@@ -18,7 +18,7 @@ The results show how populations can lock on to a series of semi-stable values.
 
 More importantly, it shows how very chaotic behavior can result from even simple non-linear systems.  Something to think about when preturbing large non-linear systems such as the earth's climate.
 
-# Usuage 
+# Usage 
 
 left mouse button zooms in to the area where the mouse is pointing
 
